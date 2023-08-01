@@ -49,3 +49,6 @@ group :development do
 end
 
 gem "figaro"
+
+gem "devise"
+gem "simple_token_authentication"
