@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-	PSWD_MIN = 3
-	PSWD_MAX = 36
+	MIN = 3
+	MAX = 36
 
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -11,16 +11,14 @@ class User < ApplicationRecord
 
 	after_initialize :set_defaults
 
-	validates :name, presence: true, length: { minimum: 3, maximum: 30 }
+	validates :name, presence: true, length: { minimum: MIN, maximum: MAX }
 	validates_format_of :name, with: /\A[a-zA-Z0-9]+\z/
 
 	validates :email, presence: true, uniqueness: true
 
 	validates :is_admin, inclusion: [true, false], exclusion: [nil]
 	
-	validates :password, 
-              	length: { minimum: PSWD_MIN, maximum: PSWD_MAX },
-				if: -> { new_record? || !password.nil? }
+	validates :password, length: { minimum: MIN, maximum: MAX }, if: -> { new_record? || !password.nil? }
 
 	has_many :posts
 	has_many :comments

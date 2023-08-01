@@ -20,8 +20,8 @@ RSpec.describe User, type: :model do
     it "should be invalid if less than 3 characters" do
       expect(build(:user, name: "ab")).to be_invalid
     end
-    it "should be invalid if more than 30 characters" do
-      expect(build(:user, name: "a" * 31)).to be_invalid
+    it "should be invalid if more than 36 characters" do
+      expect(build(:user, name: "a" * 37)).to be_invalid
     end
     it "should be valid if between 3 and 30 characters" do
       expect(build(:user, name: "a" * 4)).to be_valid
