@@ -49,4 +49,13 @@ RSpec.describe User, type: :model do
       expect(build(:user, is_admin: false)).to be_valid
     end
   end 
+
+  context "Validating password" do
+    it "should be invalid if nil" do
+      expect(build(:user, password: nil)).to be_invalid
+    end
+    it "should be invalid if password < PSWD_MIN" do
+      expect(build(:user, password: "aa")).to be_invalid
+    end
+  end
 end
