@@ -4,9 +4,7 @@ class Post < ApplicationRecord
 
     has_many :post_categories
     has_many :categories, through: :post_category
-    has_many :commentaries
-
-    has_many_attached :images
+    has_many :comments
 
     belongs_to :user, -> { where is_admin: true }
 end

@@ -40,8 +40,8 @@ class Api::CommentsController < ApplicationController
 
     private
 
-    def array_serializer(commentaries)
-        Panko::ArraySerializer.new(commentaries, each_serializer: CommentSerializer).to_json
+    def array_serializer(comments)
+        Panko::ArraySerializer.new(comments, each_serializer: CommentSerializer).to_json
     end
 
     def serializer(comment)

@@ -67,8 +67,7 @@ RSpec.describe "Api::Posts", type: :request do
 						"email" => "aaa@gmail.com"
 					},
 					'title' => "Postagem1",
-					'content' => "aaaaa",
-					'images_url' => []
+					'content' => "aaaaa"
 				},
 				{
 					'id' => 2,
@@ -76,8 +75,7 @@ RSpec.describe "Api::Posts", type: :request do
 						"email" => "aaa@gmail.com"
 					},
 					'title' => "Postagem2",
-					'content' => "bbbbb",
-					'images_url' => []
+					'content' => "bbbbb"
 				},
 				{
 					'id' => 3,
@@ -85,8 +83,7 @@ RSpec.describe "Api::Posts", type: :request do
 						"email" => "aaa@gmail.com"
 					},
 					'title' => "Postagem3",
-					'content' => "ccccc",
-					'images_url' => []
+					'content' => "ccccc"
 				}
 				])
 			end

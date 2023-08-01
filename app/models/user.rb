@@ -13,7 +13,7 @@ class User < ApplicationRecord
 	validates :is_admin, inclusion: [true, false], exclusion: [nil]
 
 	has_many :posts
-	has_many :commentaries
+	has_many :comments
 	has_many :upvotes
 
 	has_one_attached :profile_picture
