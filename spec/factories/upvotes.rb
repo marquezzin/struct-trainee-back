@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :upvote do
     status { false }
-    post { nil }
+    user { association(:user) }
+    post { association(:post) }
   end
 end
