@@ -6,6 +6,8 @@ FactoryBot.define do
     name { "name" }
     password { 123456 }
     is_admin { false }
+    bio { "bio" }
+    points { 1 }
     trait :admin do
       is_admin { true }
     end

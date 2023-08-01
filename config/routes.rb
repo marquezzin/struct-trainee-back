@@ -31,20 +31,20 @@ Rails.application.routes.draw do
       delete 'delete/:id', to: 'posts#delete'
     end
     
-    scope 'feedbacks' do
-      post 'create', to: 'feedbacks#create'
-      get 'index', to: 'feedbacks#index'
-      get 'show/:id', to: 'feedbacks#show'
-      patch 'update/:id', to: 'feedbacks#update'
-      delete 'delete/:id', to: 'feedbacks#delete'
+    scope 'upvotes' do
+      post 'create', to: 'upvotes#create'
+      get 'index', to: 'upvotes#index'
+      get 'show/:id', to: 'upvotes#show'
+      patch 'update/:id', to: 'upvotes#update'
+      delete 'delete/:id', to: 'upvotes#delete'
     end
     
-    scope 'commentaries' do
-      post 'create', to: 'commentaries#create'
-      get 'index', to: 'commentaries#index'
-      get 'show/:id', to: 'commentaries#show'
-      patch 'update/:id', to: 'commentaries#update'
-      delete 'delete/:id', to: 'commentaries#delete'
+    scope 'comments' do
+      post 'create', to: 'comments#create'
+      get 'index', to: 'comments#index'
+      get 'show/:id', to: 'comments#show'
+      patch 'update/:id', to: 'comments#update'
+      delete 'delete/:id', to: 'comments#delete'
     end
     
     scope 'post_categories' do

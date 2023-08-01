@@ -1,4 +1,4 @@
-class CommentarySerializer < Panko::Serializer
+class CommentSerializer < Panko::Serializer
     attributes :id, :content, :post, :user
 
     def post
