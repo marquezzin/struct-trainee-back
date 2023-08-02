@@ -5,9 +5,9 @@ class Api::PostsController < ApplicationController
     def create
         post = Post.new(post_params)
         post.save!
-        render json: post, status: :created #201
+        render json: serializer(post), status: :created #201
     rescue StandardError => e
-        render json: e, status: :bad_request 
+        render json: e, status: :bad_request
     end
 
     def index
@@ -22,10 +22,10 @@ class Api::PostsController < ApplicationController
         render json: e, status: :not_found
     end
 
-    def update 
+    def update
         post = Post.find(params[:id])
         post.update!(post_params)
-        render json: post, status: :ok
+        render json: serializer(post), status: :ok
     rescue StandardError => e
         render json: e, status: :not_found #404 ou :bad_request #400
     end
@@ -35,7 +35,7 @@ class Api::PostsController < ApplicationController
         post.destroy!
         render json: post, status: :ok
     rescue StandardError => e
-        render json: e, status: :bad_request 
+        render json: e, status: :bad_request
     end
 
     private

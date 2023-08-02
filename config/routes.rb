@@ -12,9 +12,10 @@ Rails.application.routes.draw do
       get 'show/:id', to: 'users#show'
       patch 'update/:id', to: 'users#update'
       delete 'delete/:id', to: 'users#delete'
-      get 'login', to: 'users#login'
+      post 'login', to: 'users#login'
+      get 'logout', to: 'users#logout'
     end
-    
+
     scope 'categories' do
       post 'create', to: 'categories#create'
       get 'index', to: 'categories#index'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
       patch 'update/:id', to: 'categories#update'
       delete 'delete/:id', to: 'categories#delete'
     end
-    
+
     scope 'posts' do
       post 'create', to: 'posts#create'
       get 'index', to: 'posts#index'
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
       patch 'update/:id', to: 'posts#update'
       delete 'delete/:id', to: 'posts#delete'
     end
-    
+
     scope 'upvotes' do
       post 'create', to: 'upvotes#create'
       get 'index', to: 'upvotes#index'
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
       patch 'update/:id', to: 'upvotes#update'
       delete 'delete/:id', to: 'upvotes#delete'
     end
-    
+
     scope 'comments' do
       post 'create', to: 'comments#create'
       get 'index', to: 'comments#index'
@@ -46,7 +47,7 @@ Rails.application.routes.draw do
       patch 'update/:id', to: 'comments#update'
       delete 'delete/:id', to: 'comments#delete'
     end
-    
+
     scope 'post_categories' do
       post 'create', to: 'post_categories#create'
       get 'index', to: 'post_categories#index'

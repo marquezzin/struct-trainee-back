@@ -41,7 +41,7 @@ RSpec.describe "Api::Users", type: :request do
 	describe "GET /index" do
 		before do
 			create(:user, id:1, name:"user", email:"user@gmail.com", password: "123456", is_admin:true)
-		end	
+		end
 		context 'when index return' do
 			before do
 				get '/api/users/index', headers: admin_authentication_params
@@ -110,6 +110,49 @@ RSpec.describe "Api::Users", type: :request do
 				delete "/api/users/delete/-1", headers: authentication_params
 				expect(response).to have_http_status(:bad_request)
 			end
+		end
+	end
+
+	describe "POST /login" do
+		before do
+		  	create(:user, email: 'teste@teste', password:'123456')
+		end
+		context "when user has no valid email" do
+		  	it " return http status unauthorized" do
+				post '/api/users/login', params: {
+					email: 'teste@test',#email inválido
+					password: '123456'
+				}
+				expect(response).to have_http_status(:unauthorized)
+		  	end
+		end
+		context "when user has no valid password" do
+			it " return http status unauthorized" do
+				post '/api/users/login', params: {
+					email: 'teste@teste',
+					password: '12345689'
+				}
+				expect(response).to have_http_status(:unauthorized)
+		  	end
+		end
+	end
+
+	describe "GET /logout" do
+		let(:user) {create(:user)}
+		before do
+		  	post '/api/users/login', params: {
+				email: 'trainee@struct',
+				password: '123456'
+			}
+		end
+		context "when user is logged" do
+		  	it "return http status ok" do
+				get '/api/users/logout', headers: {
+					'X-User-Email': user.email,
+					'X-User-Token': user.authentication_token
+				}
+				expect(response).to have_http_status(:ok)
+		  	end
 		end
 	end
 end

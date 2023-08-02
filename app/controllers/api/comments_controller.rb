@@ -5,9 +5,9 @@ class Api::CommentsController < ApplicationController
     def create
         comment = Comment.new(comment_params)
         comment.save!
-        render json: comment, status: :created
+        render json: serializer(comment), status: :created
     rescue StandardError => e
-        render e, status: :bad_request 
+        render e, status: :bad_request
     end
 
     def index
@@ -22,10 +22,10 @@ class Api::CommentsController < ApplicationController
         render json: e, status: :not_found
     end
 
-    def update 
+    def update
         comment = Comment.find(params[:id])
         comment.update!(comment_params)
-        render json: comment, status: :ok
+        render json: serializer(comment), status: :ok
     rescue StandardError => e
         render json: e, status: :not_found #404 ou :bad_request #400
     end
@@ -35,7 +35,7 @@ class Api::CommentsController < ApplicationController
         comment.destroy!
         render json: comment, status: :ok
     rescue StandardError => e
-        render json: e, status: :bad_request 
+        render json: e, status: :bad_request
     end
 
     private

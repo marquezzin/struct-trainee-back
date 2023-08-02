@@ -5,9 +5,9 @@ class Api::UpvotesController < ApplicationController
     def create
         upvote = Upvote.new(upvote_params)
         upvote.save!
-        render json: upvote, status: :created
+        render json: serializer(upvote), status: :created
     rescue StandardError => e
-        render e, status: :bad_request 
+        render e, status: :bad_request
     end
 
     def index
@@ -22,10 +22,10 @@ class Api::UpvotesController < ApplicationController
         render json: e, status: :not_found
     end
 
-    def update 
+    def update
         upvote = Upvote.find(params[:id])
         upvote.update!(upvote_params)
-        render json: upvote, status: :ok
+        render json: serializer(upvote), status: :ok
     rescue StandardError => e
         render json: e, status: :not_found #404 ou :bad_request #400
     end
@@ -35,9 +35,9 @@ class Api::UpvotesController < ApplicationController
         upvote.destroy!
         render json: upvote, status: :ok
     rescue StandardError => e
-        render json: e, status: :bad_request 
+        render json: e, status: :bad_request
     end
-    
+
     private
 
     def array_serializer(upvotes)
