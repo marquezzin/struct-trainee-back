@@ -1,9 +1,9 @@
 class Api::UsersController < ApplicationController
-    acts_as_token_authentication_handler_for User, only: [:index, :show, :update, :delete,:logout]
+    acts_as_token_authentication_handler_for User, only: [:index, :show, :update, :update_password, :delete, :logout]
     before_action :admin_authentication, only: [:index]
 
     def create
-        user = User.new(user_params)
+        user = User.create!(user_params)
         user.save!
         render json: serializer(user), status: :created #201
     rescue StandardError => e
@@ -24,10 +24,20 @@ class Api::UsersController < ApplicationController
 
     def update
         user = User.find(params[:id])
-        user.update!(user_params)
+        user.update!(user_update_params)
         render json: serializer(user), status: :ok
     rescue StandardError => e
         render json: e, status: :not_found #404 ou :bad_request #400
+    end
+
+    def update_password
+        user = User.find(params[:id])
+        user.update!(user_update_password_params)
+        render json: user, status: :ok
+    rescue ActiveRecord::RecordInvalid => e
+        render json: {message: e.message}, status: :unprocessable_entity
+    rescue ActiveRecord::RecordNotFound => e
+        render json: {message: e.message}, status: :not_found
     end
 
     def delete
@@ -67,7 +77,15 @@ class Api::UsersController < ApplicationController
         UserSerializer.new.serialize_to_json(user)
     end
 
-    def user_params
-        params.require(:user).permit(:name, :email, :is_admin, :password, :bio, :points, :profile_picture)
+    def user_params # CREATE
+        params.require(:user).permit(:name, :email, :is_admin, :password, :password_confirmation, :bio, :points, :profile_picture)
+    end
+
+    def user_update_params # UPDATE
+        params.require(:user).permit(:name, :bio, :profile_picture)
+    end
+
+    def user_update_password_params # UPDATE_PASSWORD
+        params.require(:user).permit(:password, :password_confirmation)
     end
 end
