@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 
   namespace 'api' do
     scope 'users' do
@@ -11,6 +7,7 @@ Rails.application.routes.draw do
       get 'index', to: 'users#index'
       get 'show/:id', to: 'users#show'
       patch 'update/:id', to: 'users#update'
+      patch 'update_password/:id', to: 'users#update_password'
       delete 'delete/:id', to: 'users#delete'
       post 'login', to: 'users#login'
       get 'logout', to: 'users#logout'

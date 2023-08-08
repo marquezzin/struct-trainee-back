@@ -97,6 +97,31 @@ RSpec.describe "Api::Users", type: :request do
 		end
 	end
 
+	describe "PATCH /update_password/:id" do
+		let(:user) {create(:user, password: "123456")}
+		context 'params are ok' do
+		  it 'return https status ok' do
+			patch "/api/users/update_password/#{user.id}", params: {user: {password: "123456", 
+			  password_confirmation: "123456"}}, headers: {
+			  'X-User-Email': user.email,
+			  'X-User-Token': user.authentication_token
+			}
+			expect(response).to have_http_status(:ok)
+		  end
+		end
+	
+		context 'password is not equal password_confirmation' do
+		  it 'return https status unprocessable_entity' do
+			patch "/api/users/update_password/#{user.id}", params: {user: {password: "123456", 
+			  password_confirmation: "1234567"}}, headers: {
+			  'X-User-Email': user.email,
+			  'X-User-Token': user.authentication_token
+			}
+			expect(response).to have_http_status(:unprocessable_entity)
+		  end
+		end
+	  end
+
 	describe "DELETE /delete/:id" do
 		let(:user) {create(:user)}
 		context 'user exist' do
