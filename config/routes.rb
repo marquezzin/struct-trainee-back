@@ -46,11 +46,8 @@ Rails.application.routes.draw do
     end
 
     scope 'post_categories' do
-      post 'create', to: 'post_categories#create'
       get 'index', to: 'post_categories#index'
       get 'show/:id', to: 'post_categories#show'
-      patch 'update/:id', to: 'post_categories#update'
-      delete 'delete/:id', to: 'post_categories#delete'
     end
   end
 end
