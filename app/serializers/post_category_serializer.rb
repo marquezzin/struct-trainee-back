@@ -6,6 +6,6 @@ class PostCategorySerializer < Panko::Serializer
     end
 
     def post
-        {id: object.post.id, title: object.post.title, content: object.post.content}
+        {id: object.post.id, title: object.post.title, content: object.post.content, user_id: object.post.user_id}
     end
 end
