@@ -64,7 +64,7 @@ RSpec.describe "Api::Posts", type: :request do
 				expect(JSON.parse(response.body)).to eq([{
 					'id' => 1,
 					'user' => {
-						"email" => "aaa@gmail.com"
+						"name" => "aaa"
 					},
 					'title' => "Postagem1",
 					'content' => "aaaaa"
@@ -72,7 +72,7 @@ RSpec.describe "Api::Posts", type: :request do
 				{
 					'id' => 2,
 					'user' => {
-						"email" => "aaa@gmail.com"
+						"name" => "aaa"
 					},
 					'title' => "Postagem2",
 					'content' => "bbbbb"
@@ -80,7 +80,7 @@ RSpec.describe "Api::Posts", type: :request do
 				{
 					'id' => 3,
 					'user' => {
-						"email" => "aaa@gmail.com"
+						"name" => "aaa"
 					},
 					'title' => "Postagem3",
 					'content' => "ccccc"

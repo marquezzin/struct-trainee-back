@@ -4,6 +4,6 @@ class PostSerializer < Panko::Serializer
     attributes :id, :title, :content, :user
 
     def user
-        {email: object.user.email}
+        {name: object.user.name}
     end
 end
