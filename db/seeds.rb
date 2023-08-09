@@ -1,7 +1,7 @@
 
 User.create(id:1, name: "joaocarlos", email: "joao@gmail.com", password: "12345678", is_admin: true, bio: "eu sou o joao carlos")
 User.create(id:2, name: "mariaclara", email: "maria@gmail.com", password: "12345678", is_admin: true, bio: "eu sou a maria clara")
-User.create(id:3, name: "pedropaulo", email: "pedro@gmail.com", password: "12345678", is_admin: true, bio: "eu sou o pedro paulo")
+User.create(id:3, name: "pedropaulo", email: "pedro@gmail.com", password: "12345678", is_admin: false, bio: "eu sou o pedro paulo")
 User.create(id:4, name: "leopcortes", email: "leo@gmail.com", password:"12345678", is_admin: true, bio: "eu sou o leo cortes")
 User.create(id:5, name: "gabrielmarques", email: "marques@gmail.com", password:"12345678", is_admin: true, bio: "eu sou o gabriel marques")
 
