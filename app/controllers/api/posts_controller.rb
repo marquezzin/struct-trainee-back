@@ -3,8 +3,10 @@ class Api::PostsController < ApplicationController
     before_action :admin_authentication, only: [:create, :update, :delete]
 
     def create
-        post = Post.new(post_params)
+        post = Post.new(title:post_params[:title],content:post_params[:content],user_id:post_params[:user_id])
         post.save!
+        pc = PostCategory.new(post_id:post.id,category_id:post_params[:category_id])
+        pc.save!
         render json: serializer(post), status: :created #201
     rescue StandardError => e
         render json: e, status: :bad_request
@@ -49,6 +51,6 @@ class Api::PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:title, :content, :upvotes, :user_id)
+        params.require(:post).permit(:title, :content, :upvotes, :user_id, :category_id)
     end
 end
