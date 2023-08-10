@@ -6,6 +6,6 @@ class CommentSerializer < Panko::Serializer
     end
     
     def user
-        {email: object.user.email}
+        {name: object.user.name}
     end
 end
