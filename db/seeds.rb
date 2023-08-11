@@ -2,7 +2,7 @@
 User.create(name: "joaocarlos", email: "joao@gmail.com", password: "12345678", is_admin: true, bio: "Sou o João Carlos, sou jornalista esportivo. Escrevo matérias para ESPN sobre futebol internacional e o mundo da bola.")
 User.create(name: "mariaclara", email: "maria@gmail.com", password: "12345678", is_admin: true, bio: "Sou a Maria Clara e adoro futebol. Sempre assisti jogos do Vasco com meu pai e vou em todos jogos que posso.")
 User.create(name: "pedropaulo", email: "pedro@gmail.com", password: "12345678", is_admin: false, bio: "Sou o Pedro Paulo e sou fanático pelo Gama FC. Fui representar o maior do DF na torcida pelo Brasil na Copa do Mundo da Russia.")
-User.create(name: "leopcortes", email: "leo@gmail.com", password:"12345678", is_admin: true, bio: "Sou o Leonardo Côrtes e acho que o Flamengo vai ganhar a libertadores.")
+User.create(name: "leopcortes", email: "leo@gmail.com", password:"12345678", is_admin: true, bio: "Sou o Leonardo Côrtes e acho que o Flamengo vai ganhar a Copa do Brasil.")
 User.create(name: "gabrielmarques", email: "marques@gmail.com", password:"12345678", is_admin: true, bio: "Sou o Gabriel Marques e jogo bola desde pequeno.")
 
 User.find_by(name:"joaocarlos").profile_picture.attach(io: File.open('./public/joao.png'), filename:('joao.png'))
