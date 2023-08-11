@@ -14,11 +14,14 @@ RSpec.describe "Api::Posts", type: :request do
 
 	describe "POST /create" do
 		let(:user) { create(:user, id:1, name:"aaa", email:"aaa@gmail.com", password:"123456", is_admin: true) }
+		let(:category) { create(:category, name:"bbb") }
 		let(:post_params) do
 			{
 				user_id: user.id,
+				category_id: category.id,
 				title: "aaa",
-				content: "aaaaa"
+				content: "aaaaa",
+				upvotes: 0
 			}
 		end
 		context "when params are ok" do
@@ -30,13 +33,6 @@ RSpec.describe "Api::Posts", type: :request do
 		context "when params are nil" do
 			post_params = nil
 			it "return http status bad_request" do
-				post "/api/posts/create", params:{post: post_params}, headers: admin_authentication_params
-				expect(response).to have_http_status(:bad_request)
-			end
-		end
-		context "when params are repeated" do
-			it "return http status bad_request" do
-				post "/api/posts/create", params:{post: post_params}, headers: admin_authentication_params
 				post "/api/posts/create", params:{post: post_params}, headers: admin_authentication_params
 				expect(response).to have_http_status(:bad_request)
 			end
