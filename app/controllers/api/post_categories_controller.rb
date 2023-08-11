@@ -4,13 +4,6 @@ class Api::PostCategoriesController < ApplicationController
         render json: array_serializer(post_category), :except => [:created_at, :updated_at], status: :ok
     end
 
-    def show
-        post_category = PostCategory.find(params[:id])
-        render json: serializer(post_category), status: :ok
-    rescue StandardError => e
-        render json: e, status: :not_found
-    end
-
     private
 
     def array_serializer(post_categories)

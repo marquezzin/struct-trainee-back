@@ -76,7 +76,7 @@ RSpec.describe "Api::Comments", type: :request do
 					"content" => "aaaaa"
 				},
 				'user' => {
-					"email" => "ana@gmail.com"
+					"name" => "ana"
 				}
 				},
 				{
@@ -88,7 +88,7 @@ RSpec.describe "Api::Comments", type: :request do
 					"content" => "bbbbb"
 				},
 				'user' => {
-					"email" => "ana@gmail.com"
+					"name" => "ana"
 				}
 				},
 				{
@@ -100,7 +100,7 @@ RSpec.describe "Api::Comments", type: :request do
 					"content" => "ccccc"
 				},
 				'user' => {
-					"email" => "ana@gmail.com"
+					"name" => "ana"
 				}
 				}
 				])

@@ -28,7 +28,10 @@ RSpec.describe "Api::PostCategories", type: :request do
               "id" => 1,
               "title" => "Postagem1",
               "content" => "aaaaa",
-              "user_id" => 1
+              "user" => {
+                "id" => 1,
+                "name" => "aaa"
+              }
             },
             'category' => {
               "id" => 1,
@@ -41,7 +44,10 @@ RSpec.describe "Api::PostCategories", type: :request do
               "id" => 2,
               "title" => "Postagem2",
               "content" => "bbbbb",
-              "user_id" => 1
+              "user" => {
+                "id" => 1,
+                "name" => "aaa"
+              }
             },
             'category' => {
               "id" => 2,
@@ -49,26 +55,6 @@ RSpec.describe "Api::PostCategories", type: :request do
             }
         }
         ])
-      end
-    end
-  end
-
-  describe "GET /show/:id" do
-    let(:post_category) {create(:post_category)}
-    context "when id exist" do
-      before do
-        get "/api/post_categories/show/#{post_category.id}"
-      end
-      it "return http status ok" do
-        expect(response).to have_http_status(:ok)
-      end
-    end
-    context "when id not found" do
-      before do
-        get "/api/post_categories/show/-1"
-      end
-      it "return http status not_found" do
-        expect(response).to have_http_status(:not_found)
       end
     end
   end

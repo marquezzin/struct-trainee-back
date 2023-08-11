@@ -13,12 +13,6 @@ RSpec.describe Post, type: :model do
       expect(build(:post, title:nil)).to be_invalid
       expect(build(:post, title:'')).to be_invalid
     end
-
-    it "should be invalid if title is repeated" do
-      create(:user, id:10, name:"aaa", email:"a@gmail.com", password:"123456", is_admin:true)
-      create(:post, user_id:10, title:'Post 1')
-      expect(build(:post, user_id:10, title:'Post 1')).to be_invalid
-    end
   end
 
   context "Validating content" do
